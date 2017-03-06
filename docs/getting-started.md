@@ -163,7 +163,7 @@ Go back to the 'Hello-world' directory, where you first created your component a
 * you can use `bit list @scopy` and `bit show @scopy/is-string` to verify that your component exported correctly.
 
 ```
-summery
+summary
 
 bit export @this/<component-id> <remote-scope-name>
 ```
@@ -394,4 +394,42 @@ bit export @this/<component-id> <remote-scope>
 
 # Find a component
 
-// TODO
+You can find components using the ‘search’ command.
+
+1\. To search a component in your local scope, type: `bit search @this component_name`
+
+* Note that the search will only find components that have already been committed.
+
+ For example, let’s create the bit ‘concat’ in the scope ‘my_scope’.
+
+ ```
+ test@snippets:~/my_scope$ bit create concat
+ created component "concat" in box “global"
+ ```
+
+ Then commit it:
+
+ ```
+ test@snippets:~/my_scope$ bit commit concat "initial commit"
+ component global/concat committed successfully
+ ```
+
+ Then search for it:
+
+ `test@snippets:~/my_scope$ bit search @this concat`
+ 
+ Output: 
+ `> global/concat`
+
+
+2\. You can also search components on remote scopes (scopes that are located on a remote server). To do this, type: 
+
+  `bit search @scope_name component_name`
+* For example:
+  `test@snippets:~/my_scope$ bit search @my_remote_scope concat`
+ 
+  Output: 
+  `> global/concat`
+
+  Read more about Bit search under [Discoverability](https://teambit.github.io/bit/bit-scope.html#discoverability).
+
